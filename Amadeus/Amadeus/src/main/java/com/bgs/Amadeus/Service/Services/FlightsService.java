@@ -20,6 +20,16 @@ public class FlightsService {
         return repository.searchOneWayFlightsbyParams(DepartureAirport, ArrivalAirport, DepartureDate);
     }
 
+    public void update(Flight entity){
+        Flight updateFlight =  repository.findById(entity.getId()).orElseThrow();
+
+        updateFlight.setArrivalAirport(updateFlight.getArrivalAirport());
+        updateFlight.setDepartureAirport(updateFlight.getDepartureAirport());
+        updateFlight.setDepartureDate(updateFlight.getDepartureDate());
+        updateFlight.setReturnDate(updateFlight.getReturnDate());
+        updateFlight.setPrice(updateFlight.getPrice());
+        repository.save(updateFlight);
+    }
     public List<Flight> findAll() {
         return repository.findAll();
     }

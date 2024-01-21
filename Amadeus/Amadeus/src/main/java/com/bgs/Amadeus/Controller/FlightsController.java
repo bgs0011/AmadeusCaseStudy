@@ -40,6 +40,11 @@ public class FlightsController {
         flightsService.delete(flight);
     }
 
+    @PutMapping("/update")
+    public void UpdateFlights(@RequestBody Flight flight){flightsService.update(flight);
+    }
+
+
     @GetMapping("/getbyid/{flightid}")
     public Optional GetFlightsById(@PathVariable int flightid){
         return flightsService.findById(flightid);
